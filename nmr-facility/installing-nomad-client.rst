@@ -101,3 +101,6 @@ by running ``vim /home/nmrsu/bin/nomad-client`` and then pasting the following
 
 When the file has been created set it to executable with
 ``chomd 755 /home/nmrsu/bin/nomad-client``
+
+Finally, make sure you tell Firefox to not use the proxy anymore and feel free to kill
+your SSH connection.
