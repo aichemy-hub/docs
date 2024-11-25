@@ -57,13 +57,15 @@ Now use Firefox to download the client:
 * go to https://github.com/nomad-nmr/nomad-spect-client
 * Click on the big green button called "code"
 * Click on "download zip"
+* You may want to change which version you download by clickin on the Relases section
+  in Github
 
 Now open a new terminal window and:
 
 * go to you Downloads folder and extract the zip you just downloaded:
-  ``unzip nomad-spect-client-main.zip``
+  ``unzip nomad-spect-client-3.5.0.zip``
 * Move the extracted folder (requires sudo password):
-  ``sudo mv nomad-spect-client /opt/nomad-spect-client``
+  ``sudo mv nomad-spect-client-3.5.0 /opt/nomad-spect-client``
 
 Finally, in the same terminal session make sure you run
 
