@@ -14,7 +14,9 @@ Replace ``lt912`` with your own username. You will be asked
 for you password. Enter your Imperial password.
 
 At this point you should be logged into ``serv10``. While logged into
-``serv10`` you will be able to use its internet traffic.
+``serv10`` you will be able to use its internet traffic. Keep this
+terminal open while you want to use the internet. But we will need
+to open a new terminal window for the following work.
 
 
 Next we want to install node and npm (you will be prompted for the sudo
