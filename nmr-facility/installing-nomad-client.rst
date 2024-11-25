@@ -89,7 +89,8 @@ https://www.nomad-nmr.uk/docs/getting-started/IconNMR-configuration
 
 Make sure you that you restart icon once youre done configuring it.
 
-To run nomad-client easily make the following file in ``$HOME/bin/nomad-client``.
+To run nomad-client easily make the following file in ``$HOME/bin/nomad-client``
+by running ``vim /home/nmrsu/bin/nomad-client`` and then pasting the following
 
 .. code-block:: bash
 
