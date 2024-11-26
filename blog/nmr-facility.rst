@@ -134,11 +134,11 @@ was not something NOMAD NMR provided out of the box, but fortunately, because
 NOMAD NMR is built with standard web technologies, it is easy to extend
 and integrate with other tools.
 
-At AIchemy we built a Python library AItomic (https://aitomic.readthedocs.io).
-The library allows you to pull data from NOMAD NMR in just a couple lines of
-code. The data retrieved from NOMAD is available as data frames and already
-includes all the peaks in the spectra as well as their integrals. Lets see it
-in action:
+At AIchemy we built a Python library ``aitomic``
+(https://aitomic.readthedocs.io). The library allows you to pull data from
+NOMAD NMR in just a couple lines of code. The data retrieved from NOMAD is
+available as data frames and already includes all the peaks in the spectra as
+well as their integrals. Lets see it in action:
 
 .. code-block:: python
 
@@ -174,14 +174,15 @@ Our data frame looks something like this::
    └─────────────────────────────────┴──────────┴──────────────┴────────────────────────────────┴───┴──────────────┴──────────┴──────────────────────────┴─────────────┘
 
 
-AItomic also allows you to download your raw data from the NOMAD server among
-other things. You can get it easily with pip:
+``aitomic`` also allows you to download your raw data from the NOMAD server
+among other things. You can get it easily with pip:
 
 .. code-block:: bash
 
   pip install aitomic
 
-AItomic comes with a fair number of examples, so make sure you check out the docs.
+``aitomic`` comes with a fair number of examples, so make sure you check out
+the docs.
 
 What's next for AIchemy?
 ------------------------
@@ -190,4 +191,4 @@ In this post, we took you through some of the intial work we have done at
 AIchemy. Going forward we hope to work with more facilities to on-board them
 onto good data management practices and provide toolkits to help them easily
 maange their data and use it for their research. We will continue to make
-updates to AItomic as we work with more facilities and data providers.
+updates to ``aitomic`` as we work with more facilities and data providers.
