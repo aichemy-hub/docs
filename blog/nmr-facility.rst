@@ -79,10 +79,10 @@ With the preamble out of the way, let's look at some of the work we have done
 at the Imperial College NMR facility, in conjunction with the two facility
 managers Stuart Elliot and Pete Haycock. We chose to start with the NMR
 facility because it is one of the most widely used facilities for
-characterizing and so should be familiar to most researchers. It also has the
-capacity to perform a large number of NMR experiments, which means that if we
-manage to on-board the facility to a more robust data management system, we can
-quickly build up large datasets which can be used for machine learning.
+characterizing compounds and so should be familiar to most researchers. It also
+has the capacity to perform a large number of NMR experiments, which means that
+if we manage to on-board the facility to a more robust data management system,
+we can quickly build up large datasets which can be used for machine learning.
 
 The NMR facility has 4 main Bruker instruments, each of which is connected to a
 computer. The computers on each machine are disconnected from both the College
