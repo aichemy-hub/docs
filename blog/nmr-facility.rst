@@ -114,7 +114,7 @@ for user on-boarding, cost management and so on. Experiments collected with
 NOMAD can be tagged with metadata including the user, group, experiment,
 chemicals involved, and time taken, and allows you to search by these criteria.
 Experiments can also be grouped, for example if you have a set of experiments
-you want ran in a specific research project.
+you ran for a specific research project.
 
 NOMAD NMR provides a centralised database for all experiments, which can be
 accessed from anywhere on the college network. Data access can be be finely
