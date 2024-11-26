@@ -50,7 +50,7 @@ Reusable) data principles are gaining traction, answers to these questions
 become increasingly important.
 
 Sometimes, people are advised to gain additional training to help them answer
-these questions, however, I think its more important to ask why a person
+these questions, however, I think it's more important to ask why a person
 interested in chemical research should be considering these questions at all.
 The fact is delegating data management to individual research groups means that
 good data management practices will likely be inconsistently applied, less time
@@ -77,9 +77,98 @@ Work at the NMR Facility
 
 With the preamble out of the way, let's look at some of the work we have done
 at the Imperial College NMR facility, in conjunction with the two facility
-managers Stuart Elliot and Pete Haycock.
+managers Stuart Elliot and Pete Haycock. We chose to start with the NMR
+facility because it is one of the most widely used facilities for
+characterizing and so should be familiar to most researchers. It also has the
+capacity to perform a large number of NMR experiments, which means that if we
+manage to on-board the facility to a more robust data management system, we can
+quickly build up large datasets which can be used for machine learning.
 
 The NMR facility has 4 main Bruker instruments, each of which is connected to a
 computer. The computers on each machine are disconnected from both the College
 network and from the general internet. When data is collected, it is
-transferred to a shared drive
+transferred to a shared drive, which is accessible on the college network, and
+users can copy the data onto their own computers and manage it how they like.
+The data provided to the users has no metadata, apart from being  stored in a
+folder shared by their research group.
+
+Before we started looking at improvements to the data management system we ran a focus
+group with the current users of the facility and asked them what their main points
+of friction were. The main points were:
+
+1. The need to manually link NMR spectra across time, user, group, experiment,
+   chemicals involved.
+2. Inefficiency with regard to experiment submission and monitoring. Submitting
+   many experiments at once is a chore.
+3. Lack of information about queue times.
+
+After some research into existing data management systems available for NMR
+data we ran into NOMAD NMR (https://www.nomad-nmr.uk/) developed by Tomas Lebl
+at the University of St Andrews. NOMAD NMR handles the submission and monitorj
+of NMR experiments along with collection of metadata and includes integrations
+with NMRium (https://www.nmrium.org/) for analysis of collected data. NMR
+allows you to download the raw data from the machines if you so wish, so you
+can continue to use your favorite NMR analysis software. NMR NOMAD also
+streamlines much of the day-to-day running of the NMR facility providing tools
+for user on-boarding, cost management and so on. Experiments collected with
+NOMAD can be tagged with metadata including the user, group, experiment,
+chemicals involved, and time taken, and allows you to search by these criteria.
+Experiments can also be grouped, for example if you have a set of experiments
+you want ran in a specific research project.
+
+NOMAD NMR provides a centralised database for all experiments, which can be
+accessed from anywhere on the college network. Data access can be be finely
+managed, which means data can be shared with other users or groups easily.
+Finally, and importantly for AIchemy, NOMAD NMR is built on a modern,
+well-established software stack, meaning it is easy to contribute  to if we
+need to add features for our use case, and it has well understood performance
+characteristics as well as being easy to pick up and deploy in production.
+
+Out of the box, NOMAD NMR provided a much streamed lined experience for users
+and facility managers, however, it was intended to be used through a web
+interface. Our goal at AIchemy is to make it easy for researchers to machine
+learning in their workflows. For this, they need a programmatic interface,
+ideally in Python, so that they can easily get all of their NMR data in a
+format they can feed into their machine learning framework of choice. This is
+was not something NOMAD NMR provided out of the box, but fortunately, because
+of NOMAD NMR is built with standard web technologies, it is easy to extend
+and integrate with other tools.
+
+At AIchmey we built a Python library AItomic (https://aitomic.readthedocs.io).
+The library allows you to pull data from NOMAD NMR in just a couple lines of
+code. The data retrieve from NOMAD is available as data frames and already
+includes all the peaks in the spectra as well as their integrals. Lets see it
+in action:
+
+.. code-block:: python
+
+   from aitomic import bruker, nomad_nmr
+
+   client = nomad_nmr.Client.login(
+      "http://demo.nomad-nmr.uk",
+      username="demo",
+      password="dem0User",
+   )
+   experiments = client.auto_experiments()
+   peak_df = bruker.nmr_peaks_df_1d(experiments.download())
+   peak_df = nomad_nmr.add_metadata(client, peak_df)
+
+Our data frame looks something like this::
+
+   ┌─────────────────────────────────┬──────────┬──────────────┬────────────────────────────────┬───┬──────────────┬──────────┬──────────────────────────┬─────────────┐
+   │ spectrum                        ┆ ppm      ┆ integral     ┆ auto_experiment_id             ┆ … ┆ submitted_at ┆ username ┆ group_id_right           ┆ group_name  │
+   │ ---                             ┆ ---      ┆ ---          ┆ ---                            ┆   ┆ ---          ┆ ---      ┆ ---                      ┆ ---         │
+   │ str                             ┆ f64      ┆ f64          ┆ str                            ┆   ┆ null         ┆ str      ┆ str                      ┆ str         │
+   ╞═════════════════════════════════╪══════════╪══════════════╪════════════════════════════════╪═══╪══════════════╪══════════╪══════════════════════════╪═════════════╡
+   │ 2410081201-0-1-lukasturcani/10… ┆ 8.344768 ┆ 20680.796875 ┆ 2410081201-0-1-lukasturcani-10 ┆ … ┆ null         ┆ test3    ┆ 672fdae0eb3b1c3c17062fee ┆ test-admins │
+   │ 2410081201-0-1-lukasturcani/10… ┆ 8.339878 ┆ 31792.195312 ┆ 2410081201-0-1-lukasturcani-10 ┆ … ┆ null         ┆ test3    ┆ 672fdae0eb3b1c3c17062fee ┆ test-admins │
+   │ 2410081201-0-1-lukasturcani/10… ┆ 8.338044 ┆ 20503.757812 ┆ 2410081201-0-1-lukasturcani-10 ┆ … ┆ null         ┆ test3    ┆ 672fdae0eb3b1c3c17062fee ┆ test-admins │
+   │ 2410081201-0-1-lukasturcani/10… ┆ 8.336821 ┆ 10042.96875  ┆ 2410081201-0-1-lukasturcani-10 ┆ … ┆ null         ┆ test3    ┆ 672fdae0eb3b1c3c17062fee ┆ test-admins │
+   │ 2410081201-0-1-lukasturcani/10… ┆ 8.323985 ┆ 10558.703125 ┆ 2410081201-0-1-lukasturcani-10 ┆ … ┆ null         ┆ test3    ┆ 672fdae0eb3b1c3c17062fee ┆ test-admins │
+   │ …                               ┆ …        ┆ …            ┆ …                              ┆ … ┆ …            ┆ …        ┆ …                        ┆ …           │
+   │ 2410161546-0-1-admin/10/pdata/… ┆ 1.398485 ┆ 10062.0      ┆ 2410161546-0-1-admin-10        ┆ … ┆ null         ┆ test1    ┆ 672fdae0eb3b1c3c17062fed ┆ group-1     │
+   │ 2410161546-0-1-admin/10/pdata/… ┆ 1.238337 ┆ 4.8948e7     ┆ 2410161546-0-1-admin-10        ┆ … ┆ null         ┆ test1    ┆ 672fdae0eb3b1c3c17062fed ┆ group-1     │
+   │ 2410161546-0-1-admin/10/pdata/… ┆ 1.051905 ┆ 31991.0      ┆ 2410161546-0-1-admin-10        ┆ … ┆ null         ┆ test1    ┆ 672fdae0eb3b1c3c17062fed ┆ group-1     │
+   │ 2410161546-0-1-admin/10/pdata/… ┆ 1.048848 ┆ 41602.6875   ┆ 2410161546-0-1-admin-10        ┆ … ┆ null         ┆ test1    ┆ 672fdae0eb3b1c3c17062fed ┆ group-1     │
+   │ 2410161546-0-1-admin/10/pdata/… ┆ 0.858137 ┆ 146085.9375  ┆ 2410161546-0-1-admin-10        ┆ … ┆ null         ┆ test1    ┆ 672fdae0eb3b1c3c17062fed ┆ group-1     │
+   └─────────────────────────────────┴──────────┴──────────────┴────────────────────────────────┴───┴──────────────┴──────────┴──────────────────────────┴─────────────┘
