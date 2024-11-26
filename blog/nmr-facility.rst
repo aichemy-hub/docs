@@ -134,24 +134,24 @@ was not something NOMAD NMR provided out of the box, but fortunately, because
 of NOMAD NMR is built with standard web technologies, it is easy to extend
 and integrate with other tools.
 
-At AIchmey we built a Python library AItomic (https://aitomic.readthedocs.io).
+At AIchemy we built a Python library AItomic (https://aitomic.readthedocs.io).
 The library allows you to pull data from NOMAD NMR in just a couple lines of
-code. The data retrieve from NOMAD is available as data frames and already
+code. The data retrieved from NOMAD is available as data frames and already
 includes all the peaks in the spectra as well as their integrals. Lets see it
 in action:
 
 .. code-block:: python
 
-   from aitomic import bruker, nomad_nmr
+  from aitomic import bruker, nomad_nmr
 
-   client = nomad_nmr.Client.login(
-      "http://demo.nomad-nmr.uk",
-      username="demo",
-      password="dem0User",
-   )
-   experiments = client.auto_experiments()
-   peak_df = bruker.nmr_peaks_df_1d(experiments.download())
-   peak_df = nomad_nmr.add_metadata(client, peak_df)
+  client = nomad_nmr.Client.login(
+     "http://demo.nomad-nmr.uk",
+     username="demo",
+     password="dem0User",
+  )
+  experiments = client.auto_experiments()
+  peak_df = bruker.nmr_peaks_df_1d(experiments.download())
+  peak_df = nomad_nmr.add_metadata(client, peak_df)
 
 Our data frame looks something like this::
 
@@ -172,3 +172,13 @@ Our data frame looks something like this::
    │ 2410161546-0-1-admin/10/pdata/… ┆ 1.048848 ┆ 41602.6875   ┆ 2410161546-0-1-admin-10        ┆ … ┆ null         ┆ test1    ┆ 672fdae0eb3b1c3c17062fed ┆ group-1     │
    │ 2410161546-0-1-admin/10/pdata/… ┆ 0.858137 ┆ 146085.9375  ┆ 2410161546-0-1-admin-10        ┆ … ┆ null         ┆ test1    ┆ 672fdae0eb3b1c3c17062fed ┆ group-1     │
    └─────────────────────────────────┴──────────┴──────────────┴────────────────────────────────┴───┴──────────────┴──────────┴──────────────────────────┴─────────────┘
+
+
+AItomic also allows you to download your raw data from the NOMAD server among
+other things. You can get it easily with pip:
+
+.. code-block:: bash
+
+  pip install aitomic
+
+AItomic comes with a fair number of examples, so make sure you check out the docs.
