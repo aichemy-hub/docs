@@ -21,7 +21,7 @@ to the NMR facility, and take an NMR spectrum and I will take my sample to the
 mass spectrometry facility and collect a mass spectrum. The facilities provide
 me with the machines and training to use the machines, and will give me the
 output data of these machines. When it comes to publishing my results I have to
-ensure I kept all my data in a safe place, correctly labelled and in a format
+ensure I kept all my data in a safe place, correctly labelled, and in a format
 that can be read by other people (though often not without substantial effort
 on their part).
 
