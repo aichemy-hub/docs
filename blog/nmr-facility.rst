@@ -104,11 +104,11 @@ of friction were. The main points were:
 
 After some research into existing data management systems available for NMR
 data we ran into NOMAD NMR (https://www.nomad-nmr.uk/) developed by Tomas Lebl
-at the University of St Andrews. NOMAD NMR handles the submission and monitorj
-of NMR experiments along with collection of metadata and includes integrations
-with NMRium (https://www.nmrium.org/) for analysis of collected data. NMR
-allows you to download the raw data from the machines if you so wish, so you
-can continue to use your favorite NMR analysis software. NMR NOMAD also
+at the University of St Andrews. NOMAD NMR handles the submission and
+monitoring of NMR experiments along with collection of metadata and includes
+integrations with NMRium (https://www.nmrium.org/) for analysis of collected
+data. NMR allows you to download the raw data from the machines if you so wish,
+so you can continue to use your favorite NMR analysis software. NMR NOMAD also
 streamlines much of the day-to-day running of the NMR facility providing tools
 for user on-boarding, cost management and so on. Experiments collected with
 NOMAD can be tagged with metadata including the user, group, experiment,
