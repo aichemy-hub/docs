@@ -131,7 +131,7 @@ learning in their workflows. For this, they need a programmatic interface,
 ideally in Python, so that they can easily get all of their NMR data in a
 format they can feed into their machine learning framework of choice. This is
 was not something NOMAD NMR provided out of the box, but fortunately, because
-of NOMAD NMR is built with standard web technologies, it is easy to extend
+NOMAD NMR is built with standard web technologies, it is easy to extend
 and integrate with other tools.
 
 At AIchemy we built a Python library AItomic (https://aitomic.readthedocs.io).
