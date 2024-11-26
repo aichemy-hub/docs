@@ -15,15 +15,15 @@ overview of the data management practices currently at Imperial College, where
 I am currently based, and which are fairly representative of other universities
 in the UK. Experimental researchers use a variety of independent, college or
 department owned, facilities to collect experimental data. For example, say I
-synthesised a new compound and would like to determine the molecular structure
-inside of my solution really looks like. Well, I will take my sample to the NMR
-facility, and take an NMR spectrum and I will take my sample to the mass
-spectrometry facility and collect a mass spectrum. The facilities provide me
-with the machines and training to use the machines, and will give me the output
-data of these machines. When it comes to publishing my results I have to ensure
-I kept all my data in a safe place, correctly labelled and in a format that can
-be read by other people (though often not without substantial effort on their
-part).
+synthesised a new compound and would like to determine what the molecular
+structure inside of my solution really looks like. Well, I will take my sample
+to the NMR facility, and take an NMR spectrum and I will take my sample to the
+mass spectrometry facility and collect a mass spectrum. The facilities provide
+me with the machines and training to use the machines, and will give me the
+output data of these machines. When it comes to publishing my results I have to
+ensure I kept all my data in a safe place, correctly labelled and in a format
+that can be read by other people (though often not without substantial effort
+on their part).
 
 This is essentially the state-of-play now, so let's examine some of the issues
 researchers are starting to run into to motivate some of our work at AIchemy.
