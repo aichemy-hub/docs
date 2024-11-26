@@ -182,3 +182,12 @@ other things. You can get it easily with pip:
   pip install aitomic
 
 AItomic comes with a fair number of examples, so make sure you check out the docs.
+
+What's next for AIchemy?
+------------------------
+
+In this post, we took you through some of the intial work we have done at
+AIchemy. Going forward we hope to work with more facilities to on-board them
+onto good data management practices and provide toolkits to help them easily
+maange their data and use it for their research. We will continue to make
+updates to AItomic as we work with more facilities and data providers.
