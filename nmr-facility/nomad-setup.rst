@@ -10,18 +10,17 @@ The NOMAD system consists of the following components:
 
 * A server (https://github.com/nomad-nmr/nomad-server) running in the college cloud
   available at http://aichemy-nmr.ch.ic.ac.uk.
-* A client (https://github.com/nomad-nmr/nomad-spect-client) running on each lab computer 
+* A client (https://github.com/nomad-nmr/nomad-spect-client) running on each lab computer
   connected to an NMR machine.
 
 In order for NOMAD to work the client computers must be able to reach the
 server via the college network. This is achieved by creating a HTTP proxy on
 ``serv-10``, via `caddy <https://caddyserver.com/docs>`_. When the client needs
 to talk to the NOMAD server, it talks sends an HTTP request to ``serv-10``.
-``serv-10`` has caddy running on it at a given port and it will send this
+``serv-10`` has caddy running on it (on port 80) and it will send this
 request to the server. It will then send the response back to the client. Check
 the `debug guide <./nomad-debug-guide.rst>`_ for more information on how to
 check the caddy proxy is working properly.
-
 
 Each client computer has to be running the NOMAD client, found on
 https://github.com/nomad-nmr/nomad-spect-client. The NOMAD client is
@@ -31,7 +30,6 @@ which iconNMR then executes.
 When an NMR experiment is executed, the data will be copied onto the NOMAD
 server and available to users on the college network via
 http://aichemy-nmr.ch.ic.ac.uk.
-
 
 
 Updating the NOMAD server
@@ -61,19 +59,19 @@ To check which versions of NOMAD are available, see the `releases page
     cd /nomad
 
 * Open the ``docker-compose.yaml`` file
-  
+
   .. code-block:: bash
 
     vim docker-compose.yaml
 
 * Change the version number in the following lines to your chosen version
-  
+
   .. code-block:: yaml
 
-* Restart the server by running 
-  
-  .. code-block:: bash  
-  
-    docker-compose up -d 
+* Restart the server by running
+
+  .. code-block:: bash
+
+    docker-compose up -d
 
 * Done! You can close you SSH session.
