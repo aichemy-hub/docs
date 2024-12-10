@@ -50,7 +50,7 @@ To check which versions of NOMAD are available, see the `releases page
 
   .. code-block:: bash
 
-    ssh lt912@aichemy-nmr.ch.ic.ac.uk
+    ssh aichemy-nmr.ch.ic.ac.uk
 
 * Go into the nomad directory
 
@@ -62,7 +62,7 @@ To check which versions of NOMAD are available, see the `releases page
 
   .. code-block:: bash
 
-    vim docker-compose.yaml
+    sudo vim docker-compose.yaml
 
 * Change the version number in the following lines to your chosen version
 
@@ -72,6 +72,6 @@ To check which versions of NOMAD are available, see the `releases page
 
   .. code-block:: bash
 
-    docker-compose up -d
+    sudo docker compose up -d
 
 * Done! You can close you SSH session.
