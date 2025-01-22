@@ -94,7 +94,7 @@ by running ``vim /home/nmrsu/bin/nomad-client`` and then pasting the following
 
 .. code-block:: bash
 
-  #/usr/bin/env bash
+  #!/usr/bin/env bash
 
   cd /opt/nomad-spect-client
   npm run verbose &
