@@ -68,6 +68,12 @@ To check which versions of NOMAD are available, see the `releases page
 
   .. code-block:: yaml
 
+    api:
+      image: nomadnmr/api:v3.5.5
+    ...
+    server:
+      image: nomadnmr/server:v3.5.5
+
 * Restart the server by running
 
   .. code-block:: bash
