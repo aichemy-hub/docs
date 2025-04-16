@@ -52,7 +52,8 @@ Now we can remove the old version of the code.
 The ``rm -rf`` flag means "recursively and forcibly remove a directory" (No recycle bin or second chances!) 
 Go to /opt/ in the terminal and CAREFULLY type ``sudo rm -rf nomad-spect-client`` to remove the directory entirely.
 
-Next: 
+Next put the new code in its place: 
+
 * Go to you Downloads folder and extract the new zip file:
   ``unzip nomad-spect-client-3.5.5.zip``
 * Move the extracted folder:
