@@ -48,7 +48,7 @@ so type ``ps`` to get the PIDs of any processes running ``nomad-client`` or any 
 Type ``kill -9 <PID>`` replacing <PID> with the actual PID.
 
 Now we can remove the old version of the code.
-**Double check the next command before pressing enter. Typing ``sudo rm -rf`` the wrong directory can be catastrophic.**
+**Double check the next command before pressing enter. Typing "sudo rm -rf" the wrong directory can be catastrophic.**
 The ``rm -rf`` flag means "recursively and forcibly remove a directory" (No recycle bin or second chances!) 
 Go to /opt/ in the terminal and CAREFULLY type ``sudo rm -rf nomad-spect-client`` to remove the directory entirely.
 
