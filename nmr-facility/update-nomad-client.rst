@@ -44,8 +44,7 @@ Now use Firefox to download the client:
 Next, we need to stop the existing client.
 
 * This may be in an open Konsole window, so close any windows that are running ``nomad-client`` or similar. 
-* It may also be running in the background, 
-so type ``ps`` to get the PIDs of any processes running ``nomad-client`` or any node or npm commands. 
+* It may also be running in the background so type ``ps`` to get the PIDs of any processes running ``nomad-client`` or any node or npm commands. 
 * Type ``kill -9 <PID>`` replacing <PID> with the actual PID.
 
 Now we can remove the old version of the code.
