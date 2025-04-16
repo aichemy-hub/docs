@@ -39,7 +39,26 @@ after you select "Manual proxy configuration":
 Now use Firefox to download the client:
 
 * go to https://github.com/nomad-nmr/nomad-spect-client/releases
-* Download "Source code (zip) of the latest version or version you want                                              
+* Download "Source code (zip) of the latest version or version you want
+
+Next, we need to stop the existing client. 
+This may be in an open Konsole window, so close any windows that are running ``nomad-client`` or similar. 
+It may also be running in the background, 
+so type ``ps`` to get the PIDs of any processes running ``nomad-client`` or any node or npm commands. 
+Type ``kill -9 <PID>`` replacing <PID> with the actual PID.
+
+Now we can remove the old version of the code.
+**Double check the next command before pressing enter. Typing ``sudo rm -rf`` the wrong directory can be catastrophic.**
+The ``rm -rf`` flag means "recursively and forcibly remove a directory" (No recycle bin or second chances!) 
+Go to /opt/ in the terminal and CAREFULLY type ``sudo rm -rf nomad-spect-client`` to remove the directory entirely.
+
+Next: 
+* Go to you Downloads folder and extract the new zip file:
+  ``unzip nomad-spect-client-3.5.5.zip``
+* Move the extracted folder:
+  ``sudo mv nomad-spect-client-3.5.0 /opt/nomad-spect-client``
+
+TODO: npm install, npm config and run client. 
 
                                                                         
 
