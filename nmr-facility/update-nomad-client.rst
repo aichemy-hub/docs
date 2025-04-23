@@ -1,14 +1,12 @@
 To update the NOMAD client software, we need to download the new `.zip` file from GitHub, replace the existing code with it, then restart the client.
 
-The process is similar to the process for [installing the NOMAD client](https://github.com/aichemy-hub/docs/blob/master/nmr-facility/installing-nomad-client.rst), but shorter. 
+The process is similar to the process for installing the NOMAD client(https://github.com/aichemy-hub/docs/blob/master/nmr-facility/installing-nomad-client.rst), but shorter. 
 
 First, we need use port forwarding to access the internet.
 
 Create an internet connection by creating an SSH
 tunnel to ``serv-10`` through which we can gain temporary internet
 access.
-
-To create the tunnel, run:
 
 .. code-block:: bash
 
@@ -39,7 +37,7 @@ after you select "Manual proxy configuration":
 Now use Firefox to download the client:
 
 * go to https://github.com/nomad-nmr/nomad-spect-client/releases
-* Download "Source code (zip) of the latest version or version you want
+* Download "Source code (zip)" of the latest version or version you want
 
 Next, we need to stop the existing client.
 
@@ -59,7 +57,24 @@ Next put the new code in its place:
 * Move the extracted folder:
   ``sudo mv nomad-spect-client-3.5.0 /opt/nomad-spect-client``
 
-TODO: npm install, npm config and run client. 
+In the new directory you've just created in ``/opt/nomad-spect-client`` run ``npm install`` to update the node dependencies.
+
+Next, we need to recreate the status_files and submit_files directories:
+
+.. code-block:: bash
+
+  mkdir status_files
+  mkdir submit_files
+
+Now we can reconfigure the updated version of the client:
+
+.. code-block:: bash
+
+  npm run config
+
+Follow the prompts as described at https://www.nomad-nmr.uk/docs/getting-started/client-installation/#config. Ensure you enter the correct instrument ID from http://aichemy-nmr.ch.ic.ac.uk/admin/instruments.
+
+TODO: reconfigure IcoNMR. 
 
                                                                         
 
